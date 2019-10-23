@@ -1,0 +1,26 @@
+{
+  "name": "dynamic-http-proxy",
+  "version": "0.1.0",
+  "description": "Dynamic http or https proxy for Koa and egg.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./test/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fjb040911/dynamic-http-proxy.git"
+  },
+  "keywords": [
+    "Koa",
+    "egg",
+    "dynamic",
+    "http",
+    "proxy"
+  ],
+  "author": "Jianbing Fang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fjb040911/dynamic-http-proxy/issues"
+  },
+  "homepage": "https://github.com/fjb040911/dynamic-http-proxy#readme"
+}
