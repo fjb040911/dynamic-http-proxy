@@ -13,8 +13,9 @@ const httpProxy = require('dynamic-http-proxy')
 
 // 动态逻辑返回求被代理到哪个具体path上
 const map = function(path){
-	const newPath='/yourNewPath';
-	// your code
+    const newPath='/yourNewPath';
+    // Your code
+    // You can Dynamic mapping path->target with Redis or Memory
     return newPath
 }
 
@@ -31,12 +32,14 @@ const httpProxy = require('dynamic-http-proxy')
 
 // 动态逻辑返回求被代理到哪个具体path上
 const map = function(path){
-	if (path === '/proxy/login') {
-	  return 'http://127.0.0.1:3000/login'
-	}
-	if (path === '/proxy/product') {
-	 return 'http://127.0.0.1:3001/product'
-	}
+    if (path === '/proxy/login') {
+       return 'http://127.0.0.1:3000/login'
+    }
+    if (path === '/proxy/product') {
+       return 'http://127.0.0.1:3001/product'
+    }
+    // Your code
+    // You can Dynamic mapping path->target with Redis or Memory
     return '/yourpath'
 }
 
