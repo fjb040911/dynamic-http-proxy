@@ -20,7 +20,7 @@ const map = function(path){
 }
 
 router.post('/proxy/*',  httpProxy({
-	host: 'http://target_ip:poart',
+	host: 'http://target_ip:port',
 	map
 }))
 
