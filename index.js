@@ -17,7 +17,7 @@ module.exports = function(options) {
   }
 
   return async function proxy(ctx, next) {
-    const url = resolve(ctx.path, options);
+    const url = resolve(ctx.path, options, ctx);
     if (typeof options.suppressRequestHeaders === 'object') {
       options.suppressRequestHeaders.forEach(function(h, i) {
         options.suppressRequestHeaders[i] = h.toLowerCase();
@@ -115,7 +115,7 @@ module.exports = function(options) {
   };
 };
 
-function resolve(path, options) {
+function resolve(path, options, ctx) {
   let url = options.url;
   if (url) {
     if (!/^http/.test(url)) {
@@ -129,7 +129,7 @@ function resolve(path, options) {
       path = ignoreQuery(options.map[path]);
     }
   } else if (typeof options.map === 'function') {
-    path = options.map(path);
+    path = options.map(path, ctx);
   }
   // console.log('path--->', join(options.host, path))
   return options.host ? join(options.host, path) : path;

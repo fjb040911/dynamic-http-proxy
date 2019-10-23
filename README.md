@@ -12,10 +12,13 @@
 const httpProxy = require('dynamic-http-proxy')
 
 // 动态逻辑返回求被代理到哪个具体path上
-const map = function(path){
+const map = function(path, ctx){
     const newPath='/yourNewPath';
     // Your code
     // You can Dynamic mapping path->target with Redis or Memory
+    if (ctx.user.type === 'vip') {
+        return '/vipPath'
+    }
     return newPath
 }
 
@@ -31,7 +34,7 @@ router.post('/proxy/*',  httpProxy({
 const httpProxy = require('dynamic-http-proxy')
 
 // 动态逻辑返回求被代理到哪个具体path上
-const map = function(path){
+const map = function(path, ctx){
     if (path === '/proxy/login') {
        return 'http://127.0.0.1:3000/login'
     }
@@ -40,7 +43,7 @@ const map = function(path){
     }
     // Your code
     // You can Dynamic mapping path->target with Redis or Memory
-    return '/yourpath'
+    return 'yourpath'
 }
 
 router.post('/proxy/*',  httpProxy({

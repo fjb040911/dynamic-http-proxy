@@ -1,6 +1,6 @@
 {
   "name": "dynamic-http-proxy",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Dynamic http or https proxy for Koa and egg.js",
   "main": "index.js",
   "scripts": {
