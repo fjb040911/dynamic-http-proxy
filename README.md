@@ -1,5 +1,5 @@
 # dynamic-http-proxy
-> Koa2 或 Egg.js 请求转发中间件。支持动态转发
+> Koa2 或 Egg.js 请求转发中间件。支持动态转发。可用于微服务内部API代理
 ## 用法
 
 **初始化中间件和动态代理**
@@ -7,7 +7,6 @@
 > host ,代理指向的目标机器(域名、ip、端口)，可为空。
 > map ,可指定动态代理的函数。返回一个 path 
 
-##微服务内部API代理
 目标主机全局设定
 ``` javascript
 const httpProxy = require('dynamic-http-proxy')
