@@ -22,7 +22,7 @@ const map = function(path, ctx){
     return newPath
 }
 
-or an asynchronous function
+// or an asynchronous function
 
 const map = async function(path, ctx){
     const newPath='/yourNewPath';
