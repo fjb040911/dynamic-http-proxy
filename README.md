@@ -5,7 +5,7 @@
 **初始化中间件和动态代理**
 > option说明。
 > host ,代理指向的目标机器(域名、ip、端口)，可为空。
-> map ,可指定动态代理的函数。返回一个 path 
+> map ,可指定动态代理的函数。返回一个 path 或者 Promise
 
 目标主机全局设定
 ``` javascript
@@ -19,6 +19,16 @@ const map = function(path, ctx){
     if (ctx.user.type === 'vip') {
         return '/vipPath'
     }
+    return newPath
+}
+
+or an asynchronous function
+
+const map = async function(path, ctx){
+    const newPath='/yourNewPath';
+    // Your code
+    // You can Dynamic mapping path->target with Redis or Memory
+    newPath = await Redis.mget(yourQuery)
     return newPath
 }
 

@@ -17,7 +17,15 @@ module.exports = function(options) {
   }
 
   return async function proxy(ctx, next) {
-    const url = resolve(ctx.path, options, ctx);
+    let url;
+    if (options.map){
+      if(options.map.constructor.name === 'AsyncFunction'){
+        url = await asyncResolve(ctx.path, options, ctx)
+      }
+    }
+    if (!url){
+      url = resolve(ctx.path, options, ctx);
+    }
     if (typeof options.suppressRequestHeaders === 'object') {
       options.suppressRequestHeaders.forEach(function(h, i) {
         options.suppressRequestHeaders[i] = h.toLowerCase();
@@ -132,6 +140,17 @@ function resolve(path, options, ctx) {
     path = options.map(path, ctx);
   }
   // console.log('path--->', join(options.host, path))
+  return options.host ? join(options.host, path) : path;
+}
+async function asyncResolve(path, options, ctx) {
+  let url = options.url;
+  if (url) {
+    if (!/^http/.test(url)) {
+      url = options.host ? join(options.host, url) : null;
+    }
+    return ignoreQuery(url);
+  }
+  path = await options.map(path, ctx)
   return options.host ? join(options.host, path) : path;
 }
 
